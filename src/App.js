@@ -1,3 +1,4 @@
+import './App.css';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom/client';
 import { useState } from 'react';
@@ -15,10 +16,15 @@ function App(){
     const handleClick = () => {
         setAnimals([...animals, getRandomAnimal()]);
     };
+
+    const renderedAnimals = animals.map((animal,index) => {
+        return <AnimalShow type={animal} key={index} />
+    });
     
     return (
-        <div>
+        <div className='app'>
             <button onClick={handleClick}>Add Animal</button>
+            <div className='animal-list'>{renderedAnimals}</div>
         </div>
     );  
 }
